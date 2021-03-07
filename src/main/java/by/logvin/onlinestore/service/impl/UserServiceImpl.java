@@ -15,27 +15,27 @@ public class UserServiceImpl implements UserService {
     public boolean signUp(RegistrationInfo info) throws ServiceException {
 
         try {
-            if(ValidatorProvider.getInstance().getAuthorizationValidator().validate(info)){
-                throw new ServiceException("Wrong login or password");
+            if(!ValidatorProvider.getInstance().getAuthorizationValidator().validate(info)){
+                throw new ServiceException("Wrong registration information");
             }
         } catch (ValidatorException e) {
             throw new ServiceException("Validation error", e);
         }
 
         UserDAO userDAO = DAOProvider.getInstance().getUserDAO();
-        boolean b = false;
+        boolean isSignUp = false;
         try {
-            b = userDAO.signUp(info);
+            isSignUp = userDAO.signUp(info);
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
-        return b;
+        return isSignUp;
     }
 
     @Override
-    public User signIn(String login, String password) throws ServiceException {
+    public User signIn(String email, String password) throws ServiceException {
         try {
-            if(ValidatorProvider.getInstance().getAuthorizationValidator().validate(login, password)){
+            if(!ValidatorProvider.getInstance().getAuthorizationValidator().validate(email, password)){
                 throw new ServiceException("Wrong login or password");
             }
         } catch (ValidatorException e) {
@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
         UserDAO userDAO = DAOProvider.getInstance().getUserDAO();
         User user = null;
         try {
-            user = userDAO.signIn(login, password);
+            user = userDAO.signIn(email, password);
         } catch (DAOException e) {
             throw new ServiceException(e);
         }
