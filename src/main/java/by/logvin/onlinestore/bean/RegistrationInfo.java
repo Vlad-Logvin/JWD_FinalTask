@@ -10,17 +10,20 @@ public class RegistrationInfo implements Serializable {
 
     private String email;
     private String password;
-    private String name;
-    private String surname;
-    private Date dateOfBirth;
+    private String firstName;
+    private String lastName;
+    private String dateOfBirth;
 
 
     public RegistrationInfo() {
     }
 
-    public RegistrationInfo(String email, String password) {
+    public RegistrationInfo(String email, String password, String firstName, String lastName, String dateOfBirth) {
         this.email = email;
         this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public String getEmail() {
@@ -39,17 +42,41 @@ public class RegistrationInfo implements Serializable {
         this.password = password;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RegistrationInfo that = (RegistrationInfo) o;
-        return Objects.equals(email, that.email) && Objects.equals(password, that.password);
+        return Objects.equals(email, that.email) && Objects.equals(password, that.password) && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(dateOfBirth, that.dateOfBirth);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(email, password);
+        return Objects.hash(email, password, firstName, lastName, dateOfBirth);
     }
 
     @Override
@@ -57,6 +84,9 @@ public class RegistrationInfo implements Serializable {
         return "RegistrationInfo{" +
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
                 '}';
     }
 }
