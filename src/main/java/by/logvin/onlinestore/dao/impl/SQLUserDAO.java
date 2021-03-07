@@ -7,7 +7,7 @@ import by.logvin.onlinestore.dao.exception.DAOException;
 
 public class SQLUserDAO implements UserDAO {
     @Override
-    public boolean registration(RegistrationInfo info) throws DAOException {
+    public boolean signUp(RegistrationInfo info) throws DAOException {
         return false;
     }
 
