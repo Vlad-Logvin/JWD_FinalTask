@@ -1,8 +1,12 @@
 package by.logvin.onlinestore.bean;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Card {
+public class Card implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private int id;
     private long number;
     private int validityPeriod;

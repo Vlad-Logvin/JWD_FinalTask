@@ -1,10 +1,19 @@
 package by.logvin.onlinestore.bean;
 
+import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
-public class RegistrationInfo {
+public class RegistrationInfo implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private String email;
     private String password;
+    private String name;
+    private String surname;
+    private Date dateOfBirth;
+
 
     public RegistrationInfo() {
     }
